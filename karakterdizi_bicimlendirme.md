@@ -65,6 +65,46 @@ i (integer)
 o (octal)
 sekizli düzendeki sayıları temsil eder. Bu harfi kullanarak onlu düzeydeki sayıyı sekizli düzeye çevirebiliriz.
 
+x (hexadecimal)
+onaltılı düzendeki sayıları temsil eder. Bu harfi kullanarak onlu düzeydeki sayıyı onaltılı düzeye çevirebiliriz.
+
+X (hexadecimal)
+x ile aynıdır farkı, harfle gösterilen onaltılı sayıları büyük harfle temsil etmesidir
+
+f (float)
+karakter dizisi içindeki sayıyı %f yapısı ile floata çevirdiğimizde noktadan sonra öntanımlı olarak 6 hane yer alacaktır.
+
+print("%f" %10)
+>10.000000
+
+print("%.2f" % 10)
+>10.00
+>
+% ile f arasına .2 yerleştirdiğimizde noktadan sonraki hane sayısını belirleyebiliriz.
+
+c (char)
+Bu harf tek bir karakteri temsil eder.
+
+ASCII tablosunda sayılara karşılık gelen karakterleri görür.
+print("%c" %65)
+>A
+
+Bütün ASCII tablosunu ekrana dökebiliriz.
+for i in range(128):
+    print("%s ==> %c" %(i, i))
+
+
+örnekler:
+
+for i in range(20):
+    print("%5d%5o%5x" %(i, i, i))
+veya
+for i in range(20):
+    print("%(deger)5d%(deger)5o%(deger)5x" %({"deger": i}))
+
+
+
+
 
 
 
