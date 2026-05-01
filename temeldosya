@@ -26,6 +26,8 @@ ths.close()
 
 Dosya Okumak
 
+Öntanımlı kip "r" dir.
+
 fihrist = open("fihrist.txt")
 print(fihrist.read())
 read() metodu bize dosya içeriğinin tamamını veriyor
@@ -114,11 +116,66 @@ Artık ilgili dosya üzerinde hem okuma hem de yazma işlemlerini aynı anda ger
 
 
 Dosyaların Ortasında Değişiklik Yapmak 
+read(), readline(), readlines(). Bu üç metot arasından readlines() bu konuda bize yardımcı olacaktır.
+readlines() metodu bize bir dosyanın içeriğini liste olarak veriyor. Bildiğimiz üzere listeler üzerinde
+değişiklik yapabildiğimiz türden bir veri tipidir.
+
+with open("fihrist.txt", "r+") as f:
+    veri = f.readlines()
+    veri.insert(2, "Sedat Köz\t: 0322 234 45 45\n")
+    f.seek(0)
+    f.writelines(veri)
 
 
-
+write() ile writelines() metodu arasındaki fark
+write() metodu bir dosyaya yalnızca karakter dizilerini yazabilir. Bu metot yardımıyla dosyaya liste tipinde herhangi bir veri yazamazsınız.
+Eğer mutlaka write() metodunu kullanmak isterseniz, liste üzerinde bir for döngüsü kurmanız gerekir. O zaman yukarıdaki kodları şöyle yazmanız gerekir:  
   
-  
+with open("fihrist.txt", "r+") as f:
+    veri = f.readlines()
+    veri.insert(2, "Sedat Köz\t: 0322 234 45 45\n")
+    f.seek(0)
+    for öğe in veri:
+        f.write(öğe)
+
+writelines() adlı metot ise bize dosyaya liste tipinde verileri yazma imkanı verir. Dolayısıyla herhangi bir döngü kurmak zorunda kalmadan listeleri dosyalarımıza yazabiliriz.
+
+
+with open("fihrist.txt", "r") as f:
+    veri = f.readlines()
+
+with open("fihrist.txt", "w") as f:
+    veri.insert(2, "Sedat Köz\t: 0322 234 45 45\n")
+    f.writelines(veri)
+
+Bu yaptığımız yöntemler aslında biraz güvensiz. Çünkü aynı dosyayı hem okuyup hem de bu dosyaya yeni veri ekliyoruz. Eğer bu işlemlerin herhangi bir aşamasında bir hata oluşursa,
+bütün değişiklikleri dosyaya işleyemeden dosya içeriğini tümden kaybedebiliriz. Bu tür risklere karşı en uygun çözüm, okuma ve yazma işlemlerini ayrı dosyalar üzerinde gerçekleştirmektir.
+
+
+Dosyaya Erişme Kipleri
+
+"r", "w", "a", "x", "r+", "w+", "a+", "x+", "rb", "wb", "ab", "xb", "rb+", "wb+", "ab+", "xb+"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
