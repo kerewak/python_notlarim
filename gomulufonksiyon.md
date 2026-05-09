@@ -203,13 +203,106 @@ type(l)
 range(başlangıç_değer, bitiş_değeri, atlama_değeri)
 
 
+reversed()
+
+sorted()
+
+Bu metot, bir dizi içindeki öğeleri belirli bir ölçüte göre sıraya dizmemizi sağlıyor.
+
+sorted('ahmet')
+>['a', 'e', 'h', 'm', 't']
+
+sorted() adlı fonksiyon, dizi özelliği taşıyan her türlü nesne üzerine uygulanabilir. Mesela demetlerin ve listelerin bir dizi olduğunu biliyoruz. Dolayısıyla:
+
+sorted() fonksiyonuna hangi türde bir veri tipi verirseniz verin, aldığınız çıktı her zaman bir liste olacaktır. 
 
 
+Bu fonksiyon, Türkçe karakter içeren öğeleri düzgün sıralayamaz.
+
+Bu sorunu kısmen çözebilmek için locale adlı bir modül içindeki strxfrm() adlı bir fonksiyondan yararlanabilirsiniz:
 
 
+import locale
+locale.setlocale(locale.LC_ALL, 'tr_TR') #GNU/Linux
 
 
+Bu işlemleri yaptıktan sonra, sorted() fonksiyonunun key adlı bir parametresini kullanarak ve yine locale modülünün strxfrm() adlı fonksiyonundan faydalanarak Türkçe karakterler içeren listemizi sıralamayı deneyebiliriz.
 
+
+slice()
+
+l = ['ahmet', 'mehmet', 'ayşe', 'senem', 'salih']
+
+Bir ‘dilimleme’ (slice) nesnesi oluşturuyoruz:
+
+dl = slice(0, 3)
+
+l[dl]
+>['ahmet', 'mehmet', 'ayşe']
+
+slice(başlangıç, bitiş, atlama)
+
+
+sum()
+
+Bu fonksiyonun temel görevi, bir dizi içindeki değerlerin toplamını bulmaktır.
+
+l = [1, 2, 3]
+sum(l, 10)
+>16
+
+type()
+
+type() fonksiyonunun görevi bir nesnenin hangi veri tipine ait olduğunu söylemektir. 
+type('elma')
+
+><class 'str'>
+
+
+zip()
+
+a1 = ['a', 'b', 'c']
+a2 = ['d', 'e', 'f']
+
+zip(a1, a2)
+><zip object at 0x00FD0BE8>
+
+
+print(*zip(a1, a2))
+>('a', 'd') ('b', 'e') ('c', 'f')
+
+list(zip(a1, a2))
+>[('a', 'd'), ('b', 'e'), ('c', 'f')]
+
+for a, b in zip(a1, a2):
+    print(a, b)
+>
+a d
+b e
+c f
+
+
+vars()
+
+Bu fonksiyon, mevcut isim alanı içindeki metot, fonksiyon ve nitelikleri listeler. Eğer bu fonksiyonu parametresiz olarak kullanırsak, daha önce gördüğümüz locals() fonksiyonuyla aynı çıktıyı elde ederiz:
+
+
+Böylece Python’daki gömülü fonksiyonları tek tek incelemiş olduk. Bu bölümde incelemediğimiz gömülü fonksiyonlar şunlar:
+
+        memoryview
+        iter
+        next
+        object
+        property
+        staticmethod
+        super
+        getattr
+        hasattr
+        delattr
+        classmethod
+        issubclass
+        setattr
+        __import__
 
 
 
